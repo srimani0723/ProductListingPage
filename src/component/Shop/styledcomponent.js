@@ -32,6 +32,10 @@ export const Content = styled.div`
 
 export const CPara = styled.p`
   padding: 0px;
+
+  @media (max-width: 576px) {
+    padding: 0rem 2rem;
+  }
 `;
 
 export const CHeading = styled.h1`

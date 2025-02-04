@@ -6,7 +6,7 @@ const HeaderSlice = createSlice({
         displayOptions: false,
         activeOption: 'HOME',
         sideBar: false,
-
+        logoutBtn: false,
     },
     reducers: {
         toggleBar: (state) => {
@@ -18,6 +18,9 @@ const HeaderSlice = createSlice({
         toggleSideBar: (state) => {
             state.sideBar = !state.sideBar
         },
+        toggleLogoutBtn: (state) => {
+            state.logoutBtn = !state.logoutBtn
+        }
     }
 })
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from 'react-redux'
-import { HomeLink, NavLink, NavDiv, Button, Nav, IconDiv, Para, LogoutButton, NavOptionsDiv, BagDiv, BagCount } from './styledcomponent'
+import { ProfileButton, HomeLink, NavLink, NavDiv, Button, Nav, IconDiv, Para, LogoutButton, NavOptionsDiv, BagDiv, BagCount, ProfileDiv, ProfileDivSm } from './styledcomponent'
 import { Logo, BarsIcon, LogoTxt, SearchIcon, ProfileIcon, BagIcon, ArrowIcon, HeartIcon } from "../../assets/assets";
 import HeaderSlice from '../../ReduxComponent/HeaderSlice';
 
@@ -15,7 +15,7 @@ const Options = [
 ];
 
 function Header() {
-    const { displayOptions, activeOption } = useSelector((store) => { return store.HeaderState })
+    const { displayOptions, activeOption, logoutBtn } = useSelector((store) => { return store.HeaderState })
     const { cartQuantity } = useSelector(store => store.CartState)
     const location = useLocation()
     const navigate = useNavigate()
@@ -24,7 +24,10 @@ function Header() {
 
     const toggleBarOptions = () => {
         dispatch(action.toggleBar())
+    }
 
+    const toggleLogoutBtn = () => {
+        dispatch(action.toggleLogoutBtn())
     }
 
     const onClickLogout = () => {
@@ -93,9 +96,12 @@ function Header() {
                         {cartQuantity > 0 ? <BagCount>{cartQuantity}</BagCount> : null}
                     </BagDiv>
 
-                    <Button $d={'none'}>
-                        <ProfileIcon></ProfileIcon>
-                    </Button>
+                    <ProfileDiv $d={'none'}>
+                        <Button onClick={toggleLogoutBtn}>
+                            <ProfileIcon></ProfileIcon>
+                        </Button>
+                        {logoutBtn && <LogoutButton onClick={onClickLogout}>Logout</LogoutButton>}
+                    </ProfileDiv>
                 </IconDiv>
             </NavDiv >
 
@@ -120,7 +126,13 @@ function Header() {
                     }
                     )
                 }
-                <LogoutButton onClick={onClickLogout}>Logout</LogoutButton>
+
+                <ProfileDivSm $d={'none'}>
+                    <ProfileButton onClick={toggleLogoutBtn}>
+                        Profile
+                    </ProfileButton>
+                    {logoutBtn && <LogoutButton onClick={onClickLogout}>Logout</LogoutButton>}
+                </ProfileDivSm>
             </NavOptionsDiv>
         </Nav >
     )

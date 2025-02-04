@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid lightgray;
-  padding: 1rem 1rem 0rem 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
   box-sizing: border-box;
   position: relative;
 `;
@@ -31,7 +31,7 @@ export const NavOptionsDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding-top: 0.5rem;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -117,25 +117,6 @@ export const Button = styled.button`
   }
 `;
 
-export const LogoutButton = styled.button`
-  border: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  width: 80px;
-  color: white;
-  cursor: pointer;
-  background-color: #24a0ed;
-  @media (max-width: 576px) {
-    width: 100%;
-    margin-top: 5px;
-  }
-
-  box-shadow: 3px 3px 1px lightgray;
-  &:hover {
-    box-shadow: 0px 0px 1px 2px lightgray;
-  }
-`;
-
 export const BagDiv = styled.div`
   display: flex;
   position: relative;
@@ -154,5 +135,76 @@ export const BagCount = styled.p`
   @media (max-width: 576px) {
     font-size: small;
     padding: 0px 4px;
+  }
+`;
+
+export const LogoutButton = styled.button`
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 80px;
+  color: white;
+  cursor: pointer;
+  background-color: #24a0ed;
+
+  position: absolute;
+  margin-top: 30px;
+  margin-right: 30px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  box-shadow: 3px 3px 1px lightgray;
+  &:hover {
+    box-shadow: 0px 0px 1px 2px lightgray;
+  }
+`;
+
+export const ProfileDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  @media (max-width: 576px) {
+    display: ${(props) => {
+      return props.$d;
+    }};
+  }
+`;
+
+export const ProfileButton = styled.p`
+  font-size: 1rem;
+  font-family: "Roboto";
+  font-weight: bold;
+
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  &:hover {
+    border-radius: 5px;
+    background-color: rgb(231, 245, 253);
+  }
+`;
+
+export const ProfileDivSm = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  @media (max-width: 576px) {
+    align-items: flex-start;
+  }
+  @media (min-width: 576px) {
+    display: ${(props) => {
+      return props.$d;
+    }};
   }
 `;
